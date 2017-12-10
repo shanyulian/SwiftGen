@@ -82,7 +82,7 @@ import {{module}}
     {% set sceneClass %}{% call className storyboard.initialScene %}{% endset %}
     {{accessModifier}} static let initialScene = InitialSceneType<{{sceneClass}}>({{storyboardName}}.self)
     {% endif %}
-    {% for scene in storyboard.scenes %}
+    {% for scene in storyboard.scenes where scene.identifier  %}
 
     {% set sceneID %}{{scene.identifier|swiftIdentifier:"pretty"|escapeReservedKeywords}}{% endset %}
     {% set sceneClass %}{% call className scene %}{% endset %}
@@ -95,7 +95,7 @@ import {{module}}
 {{accessModifier}} enum {{param.segueEnumName|default:"StoryboardSegue"}} {
   {% for storyboard in storyboards where storyboard.segues %}
   {{accessModifier}} enum {{storyboard.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}: String, SegueType {
-    {% for segue in storyboard.segues %}
+    {% for segue in storyboard.segues where segue.identifier %}
     {% set segueID %}{{segue.identifier|swiftIdentifier:"pretty"}}{% endset %}
     case {{segueID|escapeReservedKeywords}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}
     {% endfor %}

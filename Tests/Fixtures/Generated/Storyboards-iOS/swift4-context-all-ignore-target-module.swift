@@ -5,7 +5,6 @@ import Foundation
 import UIKit
 import CustomSegue
 import LocationPicker
-import SlackTextViewController
 
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
@@ -16,7 +15,8 @@ internal protocol StoryboardType {
 
 internal extension StoryboardType {
   static var storyboard: UIStoryboard {
-    return UIStoryboard(name: self.storyboardName, bundle: Bundle(for: BundleToken.self))
+    let name = self.storyboardName
+    return UIStoryboard(name: name, bundle: Bundle(for: BundleToken.self))
   }
 }
 
@@ -25,6 +25,7 @@ internal struct SceneType<T: Any> {
   internal let identifier: String
 
   internal func instantiate() -> T {
+    let identifier = self.identifier
     guard let controller = storyboard.storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
       fatalError("ViewController '\(identifier)' is not of the expected class \(T.self).")
     }
@@ -47,18 +48,19 @@ internal protocol SegueType: RawRepresentable { }
 
 internal extension UIViewController {
   func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+    let identifier = segue.rawValue
+    performSegue(withIdentifier: identifier, sender: sender)
   }
 }
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
-internal enum XCTStoryboardsScene {
+internal enum StoryboardScene {
   internal enum AdditionalImport: StoryboardType {
     internal static let storyboardName = "AdditionalImport"
 
     internal static let initialScene = InitialSceneType<LocationPicker.LocationPickerViewController>(storyboard: AdditionalImport.self)
 
-    internal static let `public` = SceneType<SlackTextViewController.SLKTextViewController>(storyboard: AdditionalImport.self, identifier: "public")
+    internal static let `public` = SceneType<SLKTextViewController>(storyboard: AdditionalImport.self, identifier: "public")
   }
   internal enum Anonymous: StoryboardType {
     internal static let storyboardName = "Anonymous"
@@ -104,17 +106,18 @@ internal enum XCTStoryboardsScene {
 }
 
 internal extension CreateAccViewController {
-  internal enum XCTStoryboardsSegue: String {
+  internal enum StoryboardSegue: String {
     case showPassword = "ShowPassword"
   }
 
-  func perform(segue: XCTStoryboardsSegue, sender: Any? = nil) {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+  func perform(segue: StoryboardSegue, sender: Any? = nil) {
+    let identifier = segue.rawValue
+    performSegue(withIdentifier: identifier, sender: sender)
   }
 
-  internal enum TypedXCTStoryboardsSegue {
+  internal enum TypedStoryboardSegue {
     case showPassword(destination: UIViewController)
-    case customUnnamedSegue
+    case unnamedSegue
 
     // swiftlint:disable cyclomatic_complexity
     init(segue: UIStoryboardSegue) {
@@ -123,7 +126,7 @@ internal extension CreateAccViewController {
         let vc = segue.destination
         self = .showPassword(destination: vc)
       case "":
-        self = .customUnnamedSegue
+        self = .unnamedSegue
       default:
         fatalError("Unrecognized segue '\(segue.identifier ?? "")' in CreateAccViewController")
       }
@@ -133,23 +136,24 @@ internal extension CreateAccViewController {
 }
 
 internal extension XXPickerViewController {
-  internal enum XCTStoryboardsSegue: String {
+  internal enum StoryboardSegue: String {
     case customBack = "CustomBack"
     case embed = "Embed"
     case nonCustom = "NonCustom"
     case showNavCtrl = "Show-NavCtrl"
   }
 
-  func perform(segue: XCTStoryboardsSegue, sender: Any? = nil) {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+  func perform(segue: StoryboardSegue, sender: Any? = nil) {
+    let identifier = segue.rawValue
+    performSegue(withIdentifier: identifier, sender: sender)
   }
 
-  internal enum TypedXCTStoryboardsSegue {
+  internal enum TypedStoryboardSegue {
     case customBack(destination: UIViewController, segue: CustomSegueClass2)
     case embed(destination: UIViewController)
     case nonCustom(destination: UIViewController)
     case showNavCtrl(destination: UINavigationController, segue: CustomSegueClass)
-    case customUnnamedSegue
+    case unnamedSegue
 
     // swiftlint:disable cyclomatic_complexity
     init(segue: UIStoryboardSegue) {
@@ -175,7 +179,7 @@ internal extension XXPickerViewController {
         }
         self = .showNavCtrl(destination: vc, segue: segue)
       case "":
-        self = .customUnnamedSegue
+        self = .unnamedSegue
       default:
         fatalError("Unrecognized segue '\(segue.identifier ?? "")' in XXPickerViewController")
       }
@@ -185,17 +189,18 @@ internal extension XXPickerViewController {
 }
 
 internal extension LocationPicker.LocationPickerViewController {
-  internal enum XCTStoryboardsSegue: String {
+  internal enum StoryboardSegue: String {
     case `private`
   }
 
-  func perform(segue: XCTStoryboardsSegue, sender: Any? = nil) {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+  func perform(segue: StoryboardSegue, sender: Any? = nil) {
+    let identifier = segue.rawValue
+    performSegue(withIdentifier: identifier, sender: sender)
   }
 
-  internal enum TypedXCTStoryboardsSegue {
-    case `private`(destination: SlackTextViewController.SLKTextViewController, segue: CustomSegue.SlideDownSegue)
-    case customUnnamedSegue
+  internal enum TypedStoryboardSegue {
+    case `private`(destination: SLKTextViewController, segue: CustomSegue.SlideDownSegue)
+    case unnamedSegue
 
     // swiftlint:disable cyclomatic_complexity
     init(segue: UIStoryboardSegue) {
@@ -204,12 +209,12 @@ internal extension LocationPicker.LocationPickerViewController {
         guard let segue = segue as? CustomSegue.SlideDownSegue else {
           fatalError("Segue 'private' is not of the expected type CustomSegue.SlideDownSegue.")
         }
-        guard let vc = segue.destination as? SlackTextViewController.SLKTextViewController else {
-          fatalError("Destination of segue 'private' is not of the expected type SlackTextViewController.SLKTextViewController.")
+        guard let vc = segue.destination as? SLKTextViewController else {
+          fatalError("Destination of segue 'private' is not of the expected type SLKTextViewController.")
         }
         self = .`private`(destination: vc, segue: segue)
       case "":
-        self = .customUnnamedSegue
+        self = .unnamedSegue
       default:
         fatalError("Unrecognized segue '\(segue.identifier ?? "")' in LocationPicker.LocationPickerViewController")
       }
@@ -218,18 +223,19 @@ internal extension LocationPicker.LocationPickerViewController {
   }
 }
 
-internal extension SlackTextViewController.SLKTextViewController {
-  internal enum XCTStoryboardsSegue: String {
+internal extension SLKTextViewController {
+  internal enum StoryboardSegue: String {
     case `private`
   }
 
-  func perform(segue: XCTStoryboardsSegue, sender: Any? = nil) {
-    performSegue(withIdentifier: segue.rawValue, sender: sender)
+  func perform(segue: StoryboardSegue, sender: Any? = nil) {
+    let identifier = segue.rawValue
+    performSegue(withIdentifier: identifier, sender: sender)
   }
 
-  internal enum TypedXCTStoryboardsSegue {
-    case `private`(destination: SlackTextViewController.SLKTextViewController, segue: CustomSegue.SlideDownSegue)
-    case customUnnamedSegue
+  internal enum TypedStoryboardSegue {
+    case `private`(destination: SLKTextViewController, segue: CustomSegue.SlideDownSegue)
+    case unnamedSegue
 
     // swiftlint:disable cyclomatic_complexity
     init(segue: UIStoryboardSegue) {
@@ -238,21 +244,21 @@ internal extension SlackTextViewController.SLKTextViewController {
         guard let segue = segue as? CustomSegue.SlideDownSegue else {
           fatalError("Segue 'private' is not of the expected type CustomSegue.SlideDownSegue.")
         }
-        guard let vc = segue.destination as? SlackTextViewController.SLKTextViewController else {
-          fatalError("Destination of segue 'private' is not of the expected type SlackTextViewController.SLKTextViewController.")
+        guard let vc = segue.destination as? SLKTextViewController else {
+          fatalError("Destination of segue 'private' is not of the expected type SLKTextViewController.")
         }
         self = .`private`(destination: vc, segue: segue)
       case "":
-        self = .customUnnamedSegue
+        self = .unnamedSegue
       default:
-        fatalError("Unrecognized segue '\(segue.identifier ?? "")' in SlackTextViewController.SLKTextViewController")
+        fatalError("Unrecognized segue '\(segue.identifier ?? "")' in SLKTextViewController")
       }
     }
     // swiftlint:enable cyclomatic_complexity
   }
 }
 
-internal enum XCTStoryboardsSegue {
+internal enum StoryboardSegue {
   internal enum AdditionalImport: String, SegueType {
     case `private`
   }
