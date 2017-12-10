@@ -60,6 +60,9 @@
 		DD428E261FC50FBF001649D6 /* StoryboardsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD428E161FC50FBF001649D6 /* StoryboardsContext.swift */; };
 		DD428E271FC50FBF001649D6 /* StringsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD428E171FC50FBF001649D6 /* StringsContext.swift */; };
 		DD4738A81FE07596006CB6BB /* StencilContexts in Resources */ = {isa = PBXBuildFile; fileRef = DDDE52761FAF81DB004203BE /* StencilContexts */; };
+		DD4738921FDDF075006CB6BB /* Storyboard+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47388F1FDDF075006CB6BB /* Storyboard+XML.swift */; };
+		DD4738931FDDF075006CB6BB /* CustomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4738901FDDF075006CB6BB /* CustomType.swift */; };
+		DD4738941FDDF075006CB6BB /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4738911FDDF075006CB6BB /* Storyboard.swift */; };
 		DD906FA81EE777C600C29B8A /* ParserCLICommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD906FA71EE777C600C29B8A /* ParserCLICommands.swift */; };
 		DDC09D021E1D199A005C6EE6 /* templates in Resources */ = {isa = PBXBuildFile; fileRef = DDC09D011E1D199A005C6EE6 /* templates */; };
 		DDC335E47ABB50395E595AB0 /* Pods_swiftgen_SwiftGen_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29A8876ECE7B9852963F6B5 /* Pods_swiftgen_SwiftGen_UnitTests.framework */; };
@@ -281,6 +284,9 @@
 		DD428E161FC50FBF001649D6 /* StoryboardsContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardsContext.swift; sourceTree = "<group>"; };
 		DD428E171FC50FBF001649D6 /* StringsContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsContext.swift; sourceTree = "<group>"; };
 		DD428E181FC50FBF001649D6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD47388F1FDDF075006CB6BB /* Storyboard+XML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard+XML.swift"; sourceTree = "<group>"; };
+		DD4738901FDDF075006CB6BB /* CustomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomType.swift; sourceTree = "<group>"; };
+		DD4738911FDDF075006CB6BB /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		DD906FA71EE777C600C29B8A /* ParserCLICommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserCLICommands.swift; sourceTree = "<group>"; };
 		DDC09D011E1D199A005C6EE6 /* templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = templates; sourceTree = "<group>"; };
 		DDDE504B1FAF687A004203BE /* Templates UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Templates UnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -514,13 +520,14 @@
 		DD428E061FC50FBF001649D6 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
-				DD428E071FC50FBF001649D6 /* FontsParser.swift */,
-				DD428E081FC50FBF001649D6 /* ColorsFileParsers */,
 				DD428E0D1FC50FBF001649D6 /* AssetsCatalogParser.swift */,
-				DD428E0E1FC50FBF001649D6 /* StoryboardParser.swift */,
-				DD428E0F1FC50FBF001649D6 /* Parser.swift */,
-				DD428E101FC50FBF001649D6 /* StringsParser.swift */,
+				DD428E081FC50FBF001649D6 /* ColorsFileParsers */,
 				DD428E111FC50FBF001649D6 /* ColorsParser.swift */,
+				DD428E071FC50FBF001649D6 /* FontsParser.swift */,
+				DD428E0F1FC50FBF001649D6 /* Parser.swift */,
+				DD47388E1FDDF075006CB6BB /* StoryboardParser */,
+				DD428E0E1FC50FBF001649D6 /* StoryboardParser.swift */,
+				DD428E101FC50FBF001649D6 /* StringsParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -574,6 +581,16 @@
 				DDDE52761FAF81DB004203BE /* StencilContexts */,
 			);
 			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		DD47388E1FDDF075006CB6BB /* StoryboardParser */ = {
+			isa = PBXGroup;
+			children = (
+				DD47388F1FDDF075006CB6BB /* Storyboard+XML.swift */,
+				DD4738901FDDF075006CB6BB /* CustomType.swift */,
+				DD4738911FDDF075006CB6BB /* Storyboard.swift */,
+			);
+			path = StoryboardParser;
 			sourceTree = "<group>";
 		};
 		DDC09C7D1E1D193F005C6EE6 /* Resources */ = {
@@ -1177,9 +1194,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD428E261FC50FBF001649D6 /* StoryboardsContext.swift in Sources */,
+				DD4738931FDDF075006CB6BB /* CustomType.swift in Sources */,
 				DD428E221FC50FBF001649D6 /* ColorsParser.swift in Sources */,
 				DD428E1B1FC50FBF001649D6 /* ColorsJSONFileParser.swift in Sources */,
 				DD428E1D1FC50FBF001649D6 /* ColorsXMLFileParser.swift in Sources */,
+				DD4738921FDDF075006CB6BB /* Storyboard+XML.swift in Sources */,
 				DD428E1F1FC50FBF001649D6 /* StoryboardParser.swift in Sources */,
 				DD428E251FC50FBF001649D6 /* AssetsCatalogContext.swift in Sources */,
 				DD428E1A1FC50FBF001649D6 /* ColorsCLRFileParser.swift in Sources */,
@@ -1190,6 +1209,7 @@
 				DD428E211FC50FBF001649D6 /* StringsParser.swift in Sources */,
 				DD428E231FC50FBF001649D6 /* FontsContext.swift in Sources */,
 				DD428E191FC50FBF001649D6 /* FontsParser.swift in Sources */,
+				DD4738941FDDF075006CB6BB /* Storyboard.swift in Sources */,
 				DD428E1C1FC50FBF001649D6 /* ColorsTXTFileParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

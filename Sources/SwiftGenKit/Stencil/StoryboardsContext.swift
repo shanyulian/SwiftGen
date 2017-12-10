@@ -7,10 +7,10 @@
 import Foundation
 
 private func uppercaseFirst(_ string: String) -> String {
-  guard let first = string.characters.first else {
+  guard let first = string.first else {
     return string
   }
-  return String(first).uppercased() + String(string.characters.dropFirst())
+  return String(first).uppercased() + String(string.dropFirst())
 }
 
 /*
@@ -49,11 +49,11 @@ extension StoryboardParser {
   private func map(storyboard: Storyboard) -> [String: Any] {
     var result: [String: Any] = [
       "name": storyboard.name,
-      "scenes": storyboard.scenes
+      "scenes": Array(storyboard.scenes)
         .filter { $0.identifier != "" }
         .sorted { $0.identifier < $1.identifier }
         .map { map(scene: $0) },
-      "segues": storyboard.segues
+      "segues": Array(storyboard.segues)
         .filter { $0.identifier != "" }
         .sorted { $0.identifier < $1.identifier }
         .map { map(segue: $0, in: storyboard) },

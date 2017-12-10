@@ -46,7 +46,7 @@ extension Storyboard {
 
 extension StoryboardParser {
   var customSceneTypes: [Storyboard.CustomType] {
-	var result: [String: Storyboard.CustomType] = [:]
+    var result: [String: Storyboard.CustomType] = [:]
 
     // collect scenes by custom type
     for storyboard in storyboards {
