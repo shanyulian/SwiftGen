@@ -1,0 +1,1242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Asset" representedClassName=".Asset" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="detailPage" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="DetailPage"/>
+            </userInfo>
+        </attribute>
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="imageFull" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Image.Full"/>
+            </userInfo>
+        </attribute>
+        <attribute name="imageThumb" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Image.RenditionUrl240By180"/>
+            </userInfo>
+        </attribute>
+        <attribute name="searchable" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="key" value="value"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Type"/>
+            </userInfo>
+        </attribute>
+        <relationship name="dashboardElement" maxCount="1" deletionRule="Nullify" destinationEntity="DashboardElement" inverseName="assets" inverseEntity="DashboardElement" syncable="YES"/>
+        <relationship name="kpi" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="KPI" inverseName="asset" inverseEntity="KPI" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="KPI"/>
+            </userInfo>
+        </relationship>
+        <relationship name="placeholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceholderAsset" inverseName="asset" inverseEntity="PlaceholderAsset" syncable="YES"/>
+        <fetchIndex name="byIdIndex">
+            <fetchIndexElement property="id" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+        <userInfo>
+            <entry key="entityMapperName" value="AssetMapper"/>
+            <entry key="identityAttributes" value="id"/>
+        </userInfo>
+    </entity>
+    <entity name="AssetCase" representedClassName=".AssetCase" parentEntity="Asset" syncable="YES" codeGenerationType="class">
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="CaseNumber"/>
+            </userInfo>
+        </attribute>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Status"/>
+            </userInfo>
+        </attribute>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Description"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="AssetCrew" representedClassName=".AssetCrew" parentEntity="Asset" syncable="YES" codeGenerationType="class">
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="EndDate"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="FirstName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="LastName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="StartDate"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="vessel" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Vessel"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="AssetHour" representedClassName=".AssetHour" parentEntity="Asset" syncable="YES" codeGenerationType="class">
+        <attribute name="caseNumber" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="CaseNumber"/>
+            </userInfo>
+        </attribute>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="HourDate"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="dateString" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="HourDate"/>
+            </userInfo>
+        </attribute>
+        <attribute name="hours" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Hours"/>
+            </userInfo>
+        </attribute>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Subject"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="AssetPolicy" representedClassName=".AssetPolicy" parentEntity="Asset" syncable="YES" codeGenerationType="class">
+        <attribute name="insurance" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="InsuranceType"/>
+            </userInfo>
+        </attribute>
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="PolicyNumber"/>
+            </userInfo>
+        </attribute>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="InsurerInterestDescription"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="AssetVessel" representedClassName=".AssetVessel" parentEntity="Asset" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="VesselName"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="DashboardElement" representedClassName=".DashboardElement" syncable="YES" codeGenerationType="class">
+        <attribute name="assetList" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="AssetList"/>
+            </userInfo>
+        </attribute>
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Label"/>
+            </userInfo>
+        </attribute>
+        <attribute name="solutionGroupID" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="SolutionGroup"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Type"/>
+            </userInfo>
+        </attribute>
+        <relationship name="assets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Asset" inverseName="dashboardElement" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="kpi" maxCount="1" deletionRule="Cascade" destinationEntity="KPI" inverseName="dashboardElement" inverseEntity="KPI" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="KPI"/>
+            </userInfo>
+        </relationship>
+        <relationship name="solutionGroup" maxCount="1" deletionRule="Nullify" destinationEntity="SolutionGroup" inverseName="dashboardElements" inverseEntity="SolutionGroup" syncable="YES"/>
+        <fetchIndex name="bySolutionGroupAndTypeIndex">
+            <fetchIndexElement property="solutionGroupID" type="Binary" order="ascending"/>
+            <fetchIndexElement property="type" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <userInfo>
+            <entry key="identityAttributes" value="type, solutionGroupID"/>
+        </userInfo>
+    </entity>
+    <entity name="DetailPage" representedClassName=".DetailPage" syncable="YES" codeGenerationType="class">
+        <attribute name="hasContent" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="has_content"/>
+            </userInfo>
+        </attribute>
+        <attribute name="label" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Label"/>
+            </userInfo>
+        </attribute>
+        <attribute name="pageNumber" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="PageNumber"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Type"/>
+            </userInfo>
+        </attribute>
+        <relationship name="asset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceholderAsset" inverseName="detailPages" inverseEntity="PlaceholderAsset" syncable="YES"/>
+        <userInfo>
+            <entry key="entityMapperName" value="DetailPageMapper"/>
+            <entry key="JSONDictionaryTransformerName" value="DetailPageTransformer"/>
+        </userInfo>
+    </entity>
+    <entity name="DetailPageCases" representedClassName=".DetailPageCases" parentEntity="DetailPage" syncable="YES" codeGenerationType="class">
+        <relationship name="cases" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPageCasesItem" inverseName="detailPage" inverseEntity="DetailPageCasesItem" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="DetailPageCasesItem" representedClassName=".DetailPageCasesItem" parentEntity="DetailPageGenericDataItem" syncable="YES" codeGenerationType="class">
+        <attribute name="mainType" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="MainType"/>
+            </userInfo>
+        </attribute>
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="CaseNumber"/>
+            </userInfo>
+        </attribute>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Status"/>
+            </userInfo>
+        </attribute>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Description"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Type"/>
+            </userInfo>
+        </attribute>
+        <relationship name="detailPage" maxCount="1" deletionRule="Nullify" destinationEntity="DetailPageCases" inverseName="cases" inverseEntity="DetailPageCases" syncable="YES"/>
+    </entity>
+    <entity name="DetailPageClaims" representedClassName=".DetailPageClaims" parentEntity="DetailPage" syncable="YES" codeGenerationType="class">
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPageClaimsItem" inverseName="detailPage" inverseEntity="DetailPageClaimsItem" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="DetailPageClaimsItem" representedClassName=".DetailPageClaimsItem" parentEntity="DetailPageGenericDataItem" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="IncidentDate"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="declaration" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Declaration"/>
+            </userInfo>
+        </attribute>
+        <attribute name="insuranceType" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="InsuranceType"/>
+            </userInfo>
+        </attribute>
+        <attribute name="policyNumber" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="PolicyNumber"/>
+            </userInfo>
+        </attribute>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Description"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Type"/>
+            </userInfo>
+        </attribute>
+        <relationship name="detailPage" maxCount="1" deletionRule="Nullify" destinationEntity="DetailPageClaims" inverseName="items" inverseEntity="DetailPageClaims" syncable="YES"/>
+    </entity>
+    <entity name="DetailPageCrew" representedClassName=".DetailPageCrew" parentEntity="DetailPage" syncable="YES" codeGenerationType="class">
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPageCrewMember" inverseName="detailPage" inverseEntity="DetailPageCrewMember" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="DetailPageCrewHistory" representedClassName=".DetailPageCrewHistory" parentEntity="DetailPage" syncable="YES" codeGenerationType="class">
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPageCrewHistoryItem" inverseName="detailPage" inverseEntity="DetailPageCrewHistoryItem" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="DetailPageCrewHistoryItem" representedClassName=".DetailPageCrewHistoryItem" parentEntity="DetailPageGenericDataItem" syncable="YES" codeGenerationType="category">
+        <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="EndDate"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="rank" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Rank"/>
+            </userInfo>
+        </attribute>
+        <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="StartDate"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="vessel" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Vessel"/>
+            </userInfo>
+        </attribute>
+        <relationship name="detailPage" maxCount="1" deletionRule="Nullify" destinationEntity="DetailPageCrewHistory" inverseName="items" inverseEntity="DetailPageCrewHistory" syncable="YES"/>
+    </entity>
+    <entity name="DetailPageCrewMember" representedClassName=".DetailPageCrewMember" syncable="YES" codeGenerationType="class">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="FirstName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="LastName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="nationality" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Nationality"/>
+            </userInfo>
+        </attribute>
+        <attribute name="rank" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Rank"/>
+            </userInfo>
+        </attribute>
+        <attribute name="thumb" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="PICTURE.RenditionUrl240By180"/>
+            </userInfo>
+        </attribute>
+        <relationship name="detailPage" maxCount="1" deletionRule="Nullify" destinationEntity="DetailPageCrew" inverseName="members" inverseEntity="DetailPageCrew" syncable="YES"/>
+    </entity>
+    <entity name="DetailPageDeclarations" representedClassName=".DetailPageDeclarations" parentEntity="DetailPage" syncable="YES" codeGenerationType="class">
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPageDeclarationsItem" inverseName="detailPage" inverseEntity="DetailPageDeclarationsItem" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="DetailPageDeclarationsItem" representedClassName=".DetailPageDeclarationsItem" parentEntity="DetailPageGenericDataItem" syncable="YES" codeGenerationType="category">
+        <attribute name="insuranceType" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="InsuranceType"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Name"/>
+            </userInfo>
+        </attribute>
+        <attribute name="policyID" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="PolicyID"/>
+            </userInfo>
+        </attribute>
+        <attribute name="policyNumber" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="PolicyNumber"/>
+            </userInfo>
+        </attribute>
+        <attribute name="start" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="PeriodStart"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Type"/>
+            </userInfo>
+        </attribute>
+        <attribute name="upTo" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="PeriodUpTo"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="vesselID" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="IdVessel"/>
+            </userInfo>
+        </attribute>
+        <relationship name="detailPage" maxCount="1" deletionRule="Nullify" destinationEntity="DetailPageDeclarations" inverseName="items" inverseEntity="DetailPageDeclarations" syncable="YES"/>
+    </entity>
+    <entity name="DetailPageDocuments" representedClassName=".DetailPageDocuments" parentEntity="DetailPage" syncable="YES" codeGenerationType="class">
+        <relationship name="documents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPageDocumentsFile" inverseName="detailPage" inverseEntity="DetailPageDocumentsFile" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="DetailPageDocumentsFile" representedClassName=".DetailPageDocumentsFile" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="FileDate"/>
+            </userInfo>
+        </attribute>
+        <attribute name="fileExtension" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="FileExtension"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="FileName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="original" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="DownloadUrl"/>
+            </userInfo>
+        </attribute>
+        <attribute name="thumb" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Thumbnail"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="FileType"/>
+            </userInfo>
+        </attribute>
+        <relationship name="detailPage" maxCount="1" deletionRule="Nullify" destinationEntity="DetailPageDocuments" inverseName="documents" inverseEntity="DetailPageDocuments" syncable="YES"/>
+    </entity>
+    <entity name="DetailPageFeed" representedClassName=".DetailPageFeed" parentEntity="DetailPage" syncable="YES" codeGenerationType="class"/>
+    <entity name="DetailPageFinances" representedClassName=".DetailPageFinances" parentEntity="DetailPage" syncable="YES" codeGenerationType="class">
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPageFinancesItem" inverseName="detailPage" inverseEntity="DetailPageFinancesItem" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="DetailPageFinancesItem" representedClassName=".DetailPageFinancesItem" parentEntity="DetailPageGenericDataItem" syncable="YES" codeGenerationType="category">
+        <attribute name="actual" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Actual"/>
+            </userInfo>
+        </attribute>
+        <attribute name="budget" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Budget"/>
+            </userInfo>
+        </attribute>
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="GeneralLedgerCategory"/>
+            </userInfo>
+        </attribute>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Month"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <relationship name="detailPage" maxCount="1" deletionRule="Nullify" destinationEntity="DetailPageFinances" inverseName="items" inverseEntity="DetailPageFinances" syncable="YES"/>
+    </entity>
+    <entity name="DetailPageGenericDataItem" representedClassName=".DetailPageGenericDataItem" syncable="YES" codeGenerationType="category">
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Id"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="DetailPageHours" representedClassName=".DetailPageHours" parentEntity="DetailPage" syncable="YES" codeGenerationType="class">
+        <relationship name="hours" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPageHoursItem" inverseName="detailPage" inverseEntity="DetailPageHoursItem" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="DetailPageHoursItem" representedClassName=".DetailPageHoursItem" parentEntity="DetailPageGenericDataItem" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="HourDate"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="handler" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Owner"/>
+            </userInfo>
+        </attribute>
+        <attribute name="hours" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Hours"/>
+            </userInfo>
+        </attribute>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Subject"/>
+            </userInfo>
+        </attribute>
+        <relationship name="detailPage" maxCount="1" deletionRule="Nullify" destinationEntity="DetailPageHours" inverseName="hours" inverseEntity="DetailPageHours" syncable="YES"/>
+    </entity>
+    <entity name="DetailPageInfo" representedClassName=".DetailPageInfo" parentEntity="DetailPage" syncable="YES" codeGenerationType="class">
+        <attribute name="caseID" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.IdCase"/>
+            </userInfo>
+        </attribute>
+        <attribute name="contactEmail" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.ContactEmail"/>
+            </userInfo>
+        </attribute>
+        <attribute name="contactMobile" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.ContactMobile"/>
+            </userInfo>
+        </attribute>
+        <attribute name="contactName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.Contact"/>
+            </userInfo>
+        </attribute>
+        <attribute name="contactPhone" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.ContactPhone"/>
+            </userInfo>
+        </attribute>
+        <attribute name="contactPicture" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.ContactPicture"/>
+            </userInfo>
+        </attribute>
+        <attribute name="picture" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.Picture.RenditionUrl720By480"/>
+            </userInfo>
+        </attribute>
+        <attribute name="policyID" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.PolicyID"/>
+            </userInfo>
+        </attribute>
+        <attribute name="riskVesselID" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.RiskVesselID"/>
+            </userInfo>
+        </attribute>
+        <relationship name="values" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPageInfoValue" inverseName="detailPage" inverseEntity="DetailPageInfoValue" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.values"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="DetailPageInfoValue" representedClassName=".DetailPageInfoValue" syncable="YES" codeGenerationType="class">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="label"/>
+            </userInfo>
+        </attribute>
+        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="order"/>
+            </userInfo>
+        </attribute>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="value"/>
+            </userInfo>
+        </attribute>
+        <relationship name="detailPage" maxCount="1" deletionRule="Nullify" destinationEntity="DetailPageInfo" inverseName="values" inverseEntity="DetailPageInfo" syncable="YES"/>
+    </entity>
+    <entity name="DetailPagePosition" representedClassName=".DetailPagePosition" parentEntity="DetailPage" syncable="YES" codeGenerationType="class">
+        <attribute name="course" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.COURSE"/>
+            </userInfo>
+        </attribute>
+        <attribute name="heading" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.HEADING"/>
+            </userInfo>
+        </attribute>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.LAT"/>
+            </userInfo>
+        </attribute>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.LON"/>
+            </userInfo>
+        </attribute>
+        <attribute name="speed" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.SPEED"/>
+            </userInfo>
+        </attribute>
+        <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Content.TIMESTAMP"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="Feed" representedClassName=".Feed" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="authorName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="actor.displayName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="authorPhoto" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="actor.photo.smallPhotoUrl"/>
+            </userInfo>
+        </attribute>
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="body.text"/>
+                <entry key="JSONTransformerName" value="RemoveFormattingTranformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="commentsCount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.comments.page.total"/>
+            </userInfo>
+        </attribute>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="createdDate"/>
+                <entry key="JSONTransformerName" value="DateTimeTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="header" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="header.text"/>
+            </userInfo>
+        </attribute>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="likeID" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.chatterLikes.myLike.id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="parentID" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="parent.id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="parentName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="parent.name"/>
+            </userInfo>
+        </attribute>
+        <attribute name="parentType" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="parent.type"/>
+            </userInfo>
+        </attribute>
+        <attribute name="searchable" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="type"/>
+            </userInfo>
+        </attribute>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FeedComment" inverseName="feed" inverseEntity="FeedComment" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.comments.page.items"/>
+            </userInfo>
+        </relationship>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="feedItems" inverseEntity="User" syncable="YES"/>
+        <fetchIndex name="byIdIndex">
+            <fetchIndexElement property="id" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+        <userInfo>
+            <entry key="entityMapperName" value="FeedMapper"/>
+            <entry key="identityAttributes" value="id"/>
+        </userInfo>
+    </entity>
+    <entity name="FeedCallLog" representedClassName=".FeedCallLog" parentEntity="Feed" syncable="YES" codeGenerationType="class">
+        <attribute name="call" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.enhancedLink.description"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="FeedComment" representedClassName=".FeedComment" syncable="YES" codeGenerationType="class">
+        <attribute name="authorName" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="user.displayName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="authorPhoto" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="user.photo.largePhotoUrl"/>
+            </userInfo>
+        </attribute>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="createdDate"/>
+                <entry key="JSONTransformerName" value="DateTimeTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="body.text"/>
+            </userInfo>
+        </attribute>
+        <relationship name="feed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Feed" inverseName="comments" inverseEntity="Feed" syncable="YES"/>
+        <fetchIndex name="byIdIndex">
+            <fetchIndexElement property="id" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+        <userInfo>
+            <entry key="identityAttributes" value="id"/>
+        </userInfo>
+    </entity>
+    <entity name="FeedContentPost" representedClassName=".FeedContentPost" parentEntity="Feed" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.content.renditionUrl720By480"/>
+            </userInfo>
+        </attribute>
+        <relationship name="files" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FeedContentPostFile" inverseName="contentPosts" inverseEntity="FeedContentPostFile" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.files.items"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="FeedContentPostFile" representedClassName=".FeedContentPostFile" syncable="YES" codeGenerationType="class">
+        <attribute name="fileExtension" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="fileExtension"/>
+            </userInfo>
+        </attribute>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="title"/>
+            </userInfo>
+        </attribute>
+        <attribute name="original" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="downloadUrl"/>
+            </userInfo>
+        </attribute>
+        <attribute name="thumb" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="renditionUrl240By180"/>
+            </userInfo>
+        </attribute>
+        <relationship name="contentPosts" toMany="YES" deletionRule="Nullify" destinationEntity="FeedContentPost" inverseName="files" inverseEntity="FeedContentPost" syncable="YES"/>
+        <fetchIndex name="byIdIndex">
+            <fetchIndexElement property="id" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+        <userInfo>
+            <entry key="identityAttributes" value="id"/>
+        </userInfo>
+    </entity>
+    <entity name="FeedCreateRecord" representedClassName=".FeedCreateRecord" parentEntity="Feed" syncable="YES" codeGenerationType="class">
+        <attribute name="record" optional="YES" attributeType="String" customClassName="Array&lt;Array&lt;Dictionary&lt;String, String&gt;&gt;&gt;" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.recordSnapshot.recordView.sections.fields"/>
+                <entry key="JSONTransformerName" value="CreateRecordFieldsTransformer"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="FeedEmailMessage" representedClassName=".FeedEmailMessage" parentEntity="Feed" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="Transformable" customClassName="Array&lt;String&gt;" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.emailMessage.toAddresses.emailAddress"/>
+            </userInfo>
+        </attribute>
+        <attribute name="emailBody" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.emailMessage.body"/>
+            </userInfo>
+        </attribute>
+        <attribute name="subject" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.emailMessage.subject"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="FeedLinkPost" representedClassName=".FeedLinkPost" parentEntity="Feed" syncable="YES" codeGenerationType="class">
+        <attribute name="linkName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.link.urlName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="linkURL" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.link.url"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="FeedTextPost" representedClassName=".FeedTextPost" parentEntity="Feed" syncable="YES" codeGenerationType="class"/>
+    <entity name="FeedTrackedChange" representedClassName=".FeedTrackedChange" parentEntity="Feed" syncable="YES" codeGenerationType="class">
+        <attribute name="change" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="capabilities.trackedChanges.changes"/>
+                <entry key="JSONTransformerName" value="TrackedChangeFieldsTransformer"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="FeedUnknown" representedClassName=".FeedUnknown" parentEntity="Feed" syncable="YES" codeGenerationType="class"/>
+    <entity name="KPI" representedClassName=".KPI" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Label"/>
+            </userInfo>
+        </attribute>
+        <attribute name="type" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Type"/>
+            </userInfo>
+        </attribute>
+        <relationship name="asset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Asset" inverseName="kpi" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="dashboardElement" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DashboardElement" inverseName="kpi" inverseEntity="DashboardElement" syncable="YES"/>
+        <fetchIndex name="byTypeIndex">
+            <fetchIndexElement property="type" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <userInfo>
+            <entry key="entityMapperName" value="KPIMapper"/>
+        </userInfo>
+    </entity>
+    <entity name="KPICurrency" representedClassName=".KPICurrency" parentEntity="KPIDecimal" syncable="YES" codeGenerationType="class">
+        <attribute name="currency" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="CurrencyCode"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="KPIDecimal" representedClassName=".KPIDecimal" parentEntity="KPISingleValue" syncable="YES" codeGenerationType="class">
+        <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Value"/>
+            </userInfo>
+        </attribute>
+        <userInfo>
+            <entry key="entityMapperName" value="KPIMapper"/>
+        </userInfo>
+    </entity>
+    <entity name="KPIInteger" representedClassName=".KPIInteger" parentEntity="KPISingleValue" syncable="YES" codeGenerationType="class">
+        <attribute name="value" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Value"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="KPIPercentage" representedClassName=".KPIPercentage" parentEntity="KPIDecimal" syncable="YES" codeGenerationType="class"/>
+    <entity name="KPIRange" representedClassName=".KPIRange" parentEntity="KPI" syncable="YES" codeGenerationType="class">
+        <relationship name="items" toMany="YES" deletionRule="Cascade" destinationEntity="KPIRangeItem" inverseName="range" inverseEntity="KPIRangeItem" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Values"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="KPIRangeItem" representedClassName=".KPIRangeItem" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="RangeDate"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <relationship name="kpi" maxCount="1" deletionRule="Cascade" destinationEntity="KPIValue" inverseName="kpiRangeItem" inverseEntity="KPIValue" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="ItemValue"/>
+            </userInfo>
+        </relationship>
+        <relationship name="range" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KPIRange" inverseName="items" inverseEntity="KPIRange" syncable="YES"/>
+    </entity>
+    <entity name="KPISingleValue" representedClassName=".KPISingleValue" isAbstract="YES" parentEntity="KPIValue" syncable="YES" codeGenerationType="class">
+        <relationship name="kpiVersusFirst" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KPIVersus" inverseName="first" inverseEntity="KPIVersus" syncable="YES"/>
+        <relationship name="kpiVersusSecond" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KPIVersus" inverseName="second" inverseEntity="KPIVersus" syncable="YES"/>
+        <userInfo>
+            <entry key="entityMapperName" value="KPIMapper"/>
+        </userInfo>
+    </entity>
+    <entity name="KPIString" representedClassName=".KPIString" parentEntity="KPISingleValue" syncable="YES" codeGenerationType="class">
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Value"/>
+            </userInfo>
+        </attribute>
+    </entity>
+    <entity name="KPIValue" representedClassName=".KPIValue" isAbstract="YES" parentEntity="KPI" syncable="YES" codeGenerationType="class">
+        <relationship name="kpiRangeItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KPIRangeItem" inverseName="kpi" inverseEntity="KPIRangeItem" syncable="YES"/>
+        <userInfo>
+            <entry key="entityMapperName" value="KPIMapper"/>
+        </userInfo>
+    </entity>
+    <entity name="KPIVersus" representedClassName=".KPIVersus" parentEntity="KPIValue" syncable="YES" codeGenerationType="class">
+        <relationship name="first" maxCount="1" deletionRule="Cascade" destinationEntity="KPISingleValue" inverseName="kpiVersusFirst" inverseEntity="KPISingleValue" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Value1"/>
+            </userInfo>
+        </relationship>
+        <relationship name="second" maxCount="1" deletionRule="Cascade" destinationEntity="KPISingleValue" inverseName="kpiVersusSecond" inverseEntity="KPISingleValue" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Value2"/>
+            </userInfo>
+        </relationship>
+    </entity>
+    <entity name="Office" representedClassName=".Office" syncable="YES" codeGenerationType="class">
+        <attribute name="address" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="address"/>
+            </userInfo>
+        </attribute>
+        <attribute name="company" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="company"/>
+            </userInfo>
+        </attribute>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="coordinates.lat"/>
+                <entry key="JSONTransformerName" value="DoubleTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="coordinates.lng"/>
+                <entry key="JSONTransformerName" value="DoubleTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="name"/>
+            </userInfo>
+        </attribute>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="phone"/>
+            </userInfo>
+        </attribute>
+        <userInfo>
+            <entry key="identityAttributes" value="name"/>
+        </userInfo>
+    </entity>
+    <entity name="PersonInfo" representedClassName=".PersonInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="email" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="email"/>
+            </userInfo>
+        </attribute>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="firstName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="image"/>
+            </userInfo>
+        </attribute>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="lastName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="order"/>
+            </userInfo>
+        </attribute>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="phone"/>
+            </userInfo>
+        </attribute>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="title"/>
+            </userInfo>
+        </attribute>
+        <relationship name="section" maxCount="1" deletionRule="Nullify" destinationEntity="PersonSection" inverseName="people" inverseEntity="PersonSection" syncable="YES"/>
+        <userInfo>
+            <entry key="identityAttributes" value="email"/>
+        </userInfo>
+    </entity>
+    <entity name="PersonSection" representedClassName=".PersonSection" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="name"/>
+            </userInfo>
+        </attribute>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="order"/>
+            </userInfo>
+        </attribute>
+        <relationship name="people" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PersonInfo" inverseName="section" inverseEntity="PersonInfo" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="people"/>
+            </userInfo>
+        </relationship>
+        <userInfo>
+            <entry key="identityAttributes" value="name"/>
+        </userInfo>
+    </entity>
+    <entity name="PlaceholderAsset" representedClassName=".PlaceholderAsset" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Date"/>
+                <entry key="JSONTransformerName" value="DateTransformer"/>
+            </userInfo>
+        </attribute>
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Id"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Name"/>
+            </userInfo>
+        </attribute>
+        <relationship name="asset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Asset" inverseName="placeholder" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="detailPages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DetailPage" inverseName="asset" inverseEntity="DetailPage" syncable="YES"/>
+        <fetchIndex name="byIdIndex">
+            <fetchIndexElement property="id" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+        <userInfo>
+            <entry key="identityAttributes" value="id"/>
+        </userInfo>
+    </entity>
+    <entity name="SolutionGroup" representedClassName=".SolutionGroup" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Name"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Label"/>
+            </userInfo>
+        </attribute>
+        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="SortOrder"/>
+            </userInfo>
+        </attribute>
+        <attribute name="summary" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Description"/>
+            </userInfo>
+        </attribute>
+        <attribute name="url" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Url"/>
+            </userInfo>
+        </attribute>
+        <relationship name="dashboardElements" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DashboardElement" inverseName="solutionGroup" inverseEntity="DashboardElement" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="solutionGroups" inverseEntity="User" syncable="YES"/>
+        <userInfo>
+            <entry key="identityAttributes" value="id"/>
+        </userInfo>
+    </entity>
+    <entity name="User" representedClassName=".User" syncable="YES" codeGenerationType="class">
+        <attribute name="availableDetailObjects" optional="YES" attributeType="Transformable" customClassName="Array&lt;String&gt;" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="AvailableDetailObjects"/>
+            </userInfo>
+        </attribute>
+        <attribute name="communityId" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="CommunityID"/>
+            </userInfo>
+        </attribute>
+        <attribute name="company" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="AccountName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="UserEmail"/>
+            </userInfo>
+        </attribute>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="UserFirstName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="id" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="UserId"/>
+            </userInfo>
+        </attribute>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="UserLastName"/>
+            </userInfo>
+        </attribute>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="UserPhone"/>
+            </userInfo>
+        </attribute>
+        <attribute name="photo" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="UserPhoto.largePhotoUrl"/>
+            </userInfo>
+        </attribute>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="Username"/>
+            </userInfo>
+        </attribute>
+        <relationship name="feedItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Feed" inverseName="users" inverseEntity="Feed" syncable="YES"/>
+        <relationship name="solutionGroups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SolutionGroup" inverseName="user" inverseEntity="SolutionGroup" syncable="YES">
+            <userInfo>
+                <entry key="JSONKeyPath" value="SolutionGroups"/>
+            </userInfo>
+        </relationship>
+        <fetchIndex name="byIdIndex">
+            <fetchIndexElement property="id" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+        <userInfo>
+            <entry key="identityAttributes" value="id"/>
+        </userInfo>
+    </entity>
+    <elements>
+        <element name="Asset" positionX="358" positionY="18" width="128" height="178"/>
+        <element name="AssetCase" positionX="396" positionY="-108" width="128" height="88"/>
+        <element name="AssetCrew" positionX="495" positionY="251" width="128" height="118"/>
+        <element name="AssetHour" positionX="556" positionY="117" width="128" height="120"/>
+        <element name="AssetPolicy" positionX="556" positionY="9" width="128" height="88"/>
+        <element name="AssetVessel" positionX="540" positionY="-72" width="128" height="58"/>
+        <element name="DashboardElement" positionX="-65" positionY="-144" width="128" height="150"/>
+        <element name="DetailPage" positionX="324" positionY="561" width="128" height="120"/>
+        <element name="DetailPageCases" positionX="7" positionY="723" width="128" height="60"/>
+        <element name="DetailPageCasesItem" positionX="0" positionY="855" width="128" height="135"/>
+        <element name="DetailPageClaims" positionX="324" positionY="720" width="128" height="60"/>
+        <element name="DetailPageClaimsItem" positionX="331" positionY="846" width="128" height="150"/>
+        <element name="DetailPageCrew" positionX="997" positionY="720" width="128" height="60"/>
+        <element name="DetailPageCrewHistory" positionX="-308" positionY="720" width="128" height="60"/>
+        <element name="DetailPageCrewHistoryItem" positionX="-315" positionY="870" width="128" height="120"/>
+        <element name="DetailPageCrewMember" positionX="1008" positionY="846" width="128" height="150"/>
+        <element name="DetailPageDeclarations" positionX="-153" positionY="723" width="128" height="60"/>
+        <element name="DetailPageDeclarationsItem" positionX="-162" positionY="837" width="128" height="180"/>
+        <element name="DetailPageDocuments" positionX="837" positionY="720" width="128" height="60"/>
+        <element name="DetailPageDocumentsFile" positionX="844" positionY="833" width="128" height="150"/>
+        <element name="DetailPageFeed" positionX="565" positionY="585" width="128" height="45"/>
+        <element name="DetailPageFinances" positionX="169" positionY="720" width="128" height="60"/>
+        <element name="DetailPageFinancesItem" positionX="171" positionY="873" width="128" height="120"/>
+        <element name="DetailPageGenericDataItem" positionX="61" positionY="1047" width="128" height="60"/>
+        <element name="DetailPageHours" positionX="504" positionY="723" width="128" height="60"/>
+        <element name="DetailPageHoursItem" positionX="502" positionY="872" width="128" height="118"/>
+        <element name="DetailPageInfo" positionX="675" positionY="720" width="128" height="195"/>
+        <element name="DetailPageInfoValue" positionX="682" positionY="903" width="128" height="105"/>
+        <element name="DetailPagePosition" positionX="36" positionY="540" width="128" height="135"/>
+        <element name="Feed" positionX="1150" positionY="-85" width="128" height="270"/>
+        <element name="FeedCallLog" positionX="952" positionY="-171" width="128" height="58"/>
+        <element name="FeedComment" positionX="979" positionY="144" width="128" height="135"/>
+        <element name="FeedContentPost" positionX="1312" positionY="-81" width="128" height="73"/>
+        <element name="FeedContentPostFile" positionX="1537" positionY="-144" width="128" height="135"/>
+        <element name="FeedCreateRecord" positionX="952" positionY="36" width="128" height="58"/>
+        <element name="FeedEmailMessage" positionX="1312" positionY="9" width="128" height="90"/>
+        <element name="FeedLinkPost" positionX="945" positionY="-72" width="128" height="73"/>
+        <element name="FeedTextPost" positionX="1285" positionY="153" width="128" height="43"/>
+        <element name="FeedTrackedChange" positionX="1123" positionY="-186" width="128" height="58"/>
+        <element name="FeedUnknown" positionX="1143" positionY="207" width="128" height="43"/>
+        <element name="KPI" positionX="-479" positionY="41" width="128" height="103"/>
+        <element name="KPICurrency" positionX="-396" positionY="428" width="128" height="58"/>
+        <element name="KPIDecimal" positionX="-486" positionY="347" width="128" height="58"/>
+        <element name="KPIInteger" positionX="-639" positionY="338" width="128" height="58"/>
+        <element name="KPIPercentage" positionX="-587" positionY="423" width="128" height="45"/>
+        <element name="KPIRange" positionX="-477" positionY="-112" width="128" height="58"/>
+        <element name="KPIRangeItem" positionX="-729" positionY="-135" width="128" height="88"/>
+        <element name="KPISingleValue" positionX="-488" positionY="225" width="128" height="73"/>
+        <element name="KPIString" positionX="-333" positionY="338" width="128" height="58"/>
+        <element name="KPIValue" positionX="-648" positionY="93" width="128" height="58"/>
+        <element name="KPIVersus" positionX="-774" positionY="224" width="128" height="73"/>
+        <element name="Office" positionX="-369" positionY="-477" width="128" height="135"/>
+        <element name="PersonInfo" positionX="-551" positionY="-369" width="128" height="165"/>
+        <element name="PersonSection" positionX="-326" positionY="-297" width="128" height="90"/>
+        <element name="PlaceholderAsset" positionX="160" positionY="342" width="128" height="120"/>
+        <element name="SolutionGroup" positionX="297" positionY="-423" width="128" height="150"/>
+        <element name="User" positionX="495" positionY="-477" width="128" height="225"/>
+    </elements>
+</model>
