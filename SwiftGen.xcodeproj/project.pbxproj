@@ -59,10 +59,10 @@
 		DD428E251FC50FBF001649D6 /* AssetsCatalogContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD428E151FC50FBF001649D6 /* AssetsCatalogContext.swift */; };
 		DD428E261FC50FBF001649D6 /* StoryboardsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD428E161FC50FBF001649D6 /* StoryboardsContext.swift */; };
 		DD428E271FC50FBF001649D6 /* StringsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD428E171FC50FBF001649D6 /* StringsContext.swift */; };
-		DD4738A81FE07596006CB6BB /* StencilContexts in Resources */ = {isa = PBXBuildFile; fileRef = DDDE52761FAF81DB004203BE /* StencilContexts */; };
 		DD4738921FDDF075006CB6BB /* Storyboard+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD47388F1FDDF075006CB6BB /* Storyboard+XML.swift */; };
 		DD4738931FDDF075006CB6BB /* CustomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4738901FDDF075006CB6BB /* CustomType.swift */; };
 		DD4738941FDDF075006CB6BB /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4738911FDDF075006CB6BB /* Storyboard.swift */; };
+		DD4738A81FE07596006CB6BB /* StencilContexts in Resources */ = {isa = PBXBuildFile; fileRef = DDDE52761FAF81DB004203BE /* StencilContexts */; };
 		DD906FA81EE777C600C29B8A /* ParserCLICommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD906FA71EE777C600C29B8A /* ParserCLICommands.swift */; };
 		DDC09D021E1D199A005C6EE6 /* templates in Resources */ = {isa = PBXBuildFile; fileRef = DDC09D011E1D199A005C6EE6 /* templates */; };
 		DDC335E47ABB50395E595AB0 /* Pods_swiftgen_SwiftGen_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29A8876ECE7B9852963F6B5 /* Pods_swiftgen_SwiftGen_UnitTests.framework */; };
@@ -521,26 +521,25 @@
 			isa = PBXGroup;
 			children = (
 				DD428E0D1FC50FBF001649D6 /* AssetsCatalogParser.swift */,
-				DD428E081FC50FBF001649D6 /* ColorsFileParsers */,
-				DD428E111FC50FBF001649D6 /* ColorsParser.swift */,
+				DD428E081FC50FBF001649D6 /* ColorsParser */,
 				DD428E071FC50FBF001649D6 /* FontsParser.swift */,
 				DD428E0F1FC50FBF001649D6 /* Parser.swift */,
 				DD47388E1FDDF075006CB6BB /* StoryboardParser */,
-				DD428E0E1FC50FBF001649D6 /* StoryboardParser.swift */,
 				DD428E101FC50FBF001649D6 /* StringsParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
 		};
-		DD428E081FC50FBF001649D6 /* ColorsFileParsers */ = {
+		DD428E081FC50FBF001649D6 /* ColorsParser */ = {
 			isa = PBXGroup;
 			children = (
+				DD428E111FC50FBF001649D6 /* ColorsParser.swift */,
 				DD428E091FC50FBF001649D6 /* ColorsCLRFileParser.swift */,
 				DD428E0A1FC50FBF001649D6 /* ColorsJSONFileParser.swift */,
 				DD428E0B1FC50FBF001649D6 /* ColorsTXTFileParser.swift */,
 				DD428E0C1FC50FBF001649D6 /* ColorsXMLFileParser.swift */,
 			);
-			path = ColorsFileParsers;
+			path = ColorsParser;
 			sourceTree = "<group>";
 		};
 		DD428E121FC50FBF001649D6 /* Stencil */ = {
@@ -573,6 +572,17 @@
 			path = Sources/SwiftGenKit;
 			sourceTree = "<group>";
 		};
+		DD47388E1FDDF075006CB6BB /* StoryboardParser */ = {
+			isa = PBXGroup;
+			children = (
+				DD428E0E1FC50FBF001649D6 /* StoryboardParser.swift */,
+				DD4738901FDDF075006CB6BB /* CustomType.swift */,
+				DD4738911FDDF075006CB6BB /* Storyboard.swift */,
+				DD47388F1FDDF075006CB6BB /* Storyboard+XML.swift */,
+			);
+			path = StoryboardParser;
+			sourceTree = "<group>";
+		};
 		DD4738A71FE07539006CB6BB /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,16 +591,6 @@
 				DDDE52761FAF81DB004203BE /* StencilContexts */,
 			);
 			path = Fixtures;
-			sourceTree = "<group>";
-		};
-		DD47388E1FDDF075006CB6BB /* StoryboardParser */ = {
-			isa = PBXGroup;
-			children = (
-				DD47388F1FDDF075006CB6BB /* Storyboard+XML.swift */,
-				DD4738901FDDF075006CB6BB /* CustomType.swift */,
-				DD4738911FDDF075006CB6BB /* Storyboard.swift */,
-			);
-			path = StoryboardParser;
 			sourceTree = "<group>";
 		};
 		DDC09C7D1E1D193F005C6EE6 /* Resources */ = {
