@@ -23,6 +23,7 @@ target 'SwiftGenKit' do
 
   target 'SwiftGenKit UnitTests' do
     inherit! :complete
+    pod 'StencilSwiftKit', '~> 2.3'
   end
 end
 
