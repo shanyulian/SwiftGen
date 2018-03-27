@@ -23,18 +23,20 @@ final class DataModel {
     let name: String
     let predicate: String
     let userInfo: [String: String]
+    weak var entity: Entity?
     private let entityName: String
-    weak var model: DataModel? = nil
+
+    weak var model: DataModel? = nil {
+      didSet {
+        entity = model?.entities[entityName]
+      }
+    }
 
     init(name: String, predicate: String, entity: String, userInfo: [String: String]) {
       self.name = name
       self.predicate = predicate
       self.entityName = entity
       self.userInfo = userInfo
-    }
-
-    var entity: Entity? {
-      return model?.entities[entityName]
     }
   }
 
@@ -45,8 +47,14 @@ final class DataModel {
     let isOrdered: Bool
     let toMany: Bool
     let userInfo: [String: String]
+    weak var destination: Entity?
     private let destinationName: String
-    weak var model: DataModel? = nil
+
+    weak var model: DataModel? = nil {
+      didSet {
+        destination = model?.entities[destinationName]
+      }
+    }
 
     init(name: String, inverseName: String, isOptional: Bool, isOrdered: Bool, toMany: Bool, destination: String, userInfo: [String: String]) {
       self.name = name
@@ -56,10 +64,6 @@ final class DataModel {
       self.toMany = toMany
       self.destinationName = destination
       self.userInfo = userInfo
-    }
-
-    var destination: Entity? {
-      return model?.entities[destinationName]
     }
   }
 
@@ -71,10 +75,12 @@ final class DataModel {
     let attributes: [Attribute]
     let fetchedProperties: [FetchedProperty]
     let relationships: [Relationship]
+    weak var parent: Entity?
     private let parentName: String?
 
     weak var model: DataModel? = nil {
       didSet {
+        parent = model?.entities[parentName ?? ""]
         fetchedProperties.forEach { $0.model = model }
         relationships.forEach { $0.model = model }
       }
@@ -89,10 +95,6 @@ final class DataModel {
       self.fetchedProperties = fetchedProperties
       self.relationships = relationships
       self.userInfo = userInfo
-    }
-
-    var parent: Entity? {
-      return model?.entities[parentName ?? ""]
     }
   }
 
