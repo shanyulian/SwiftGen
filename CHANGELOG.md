@@ -22,7 +22,9 @@ _None_
 
 ### Internal Changes
 
-_None_
+* Switched to using SwiftLint via CocoaPods instead of our own install scripts.  
+  [David Jennes](https://github.com/djbe) 
+  [#401](https://github.com/SwiftGen/SwiftGen/pull/401)
 
 ## 5.3.0
 
